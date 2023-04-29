@@ -1,0 +1,85 @@
+﻿
+@model Vidly.ViewModels.MovieFormViewModel
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+@if (Model.Movie.Id == 0)
+{
+    <h1>Create a Movie </h1>
+}
+else
+{
+    <h1>Edit a Movie</h1>
+}
+
+<div class="w-50">
+
+    @using (Html.BeginForm("Save", "Movie"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.Name)
+            @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Movie.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.ReleaseDate)
+            @Html.TextBoxFor(m => m.Movie.ReleaseDate, new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
+            @if (Model.Movie.Id != 0)
+            {
+                <p>Default value @Model.Movie.ReleaseDate.ToShortDateString()</p>
+            }
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.DateAdded)
+            @Html.TextBoxFor(
+                m => m.Movie.DateAdded,
+                new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(m => m.Movie.DateAdded)
+            @if (Model.Movie.Id != 0)
+            {
+                <p>Default value @Model.Movie.DateAdded.ToShortDateString()</p>
+            }
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.Stock)
+            @Html.TextBoxFor(m => m.Movie.Stock, new { @class = "form-control", type = "number" })
+            @Html.ValidationMessageFor(m => m.Movie.Stock)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.GenreID, "GenreID")
+            @Html.DropDownListFor(
+                m => m.Movie.GenreID,
+                new SelectList(Model.Genres,
+                    "Id",
+                    "Name"),
+                "Select Genre"
+                , new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Movie.GenreID)
+
+        </div>
+
+        @Html.HiddenFor(m => m.Movie.Id)
+        @Html.AntiForgeryToken()
+        
+
+        @if (Model.Movie.Id == 0)
+        {
+            <button class="btn btn-primary m-2" type="submit">
+                Create
+            </button>
+        }
+        else
+        {
+
+            <button class="btn btn-primary m-2" type="submit">
+                Edit
+            </button>
+
+        }
+    }
+</div>

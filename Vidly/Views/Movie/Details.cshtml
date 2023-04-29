@@ -1,0 +1,13 @@
+﻿@model Movie
+<h1>@Model.Name</h1>
+<ul>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Date Added: @Model.DateAdded.ToShortDateString()</li>
+    <li>Release Date: @Model.ReleaseDate.ToShortDateString()</li>
+    <li>Stock: @Model.Stock</li>
+    
+    <li>
+        @Html.ActionLink("Edit","Edit", "Movie", new{id = Model.Id}, new{ @class = "btn btn-primary p-2 my-2" } )
+    </li>
+
+</ul>

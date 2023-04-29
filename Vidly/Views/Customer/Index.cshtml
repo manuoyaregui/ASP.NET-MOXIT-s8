@@ -1,0 +1,35 @@
+﻿
+<h1 id="customers-site">List of Customers</h1>
+
+@Html.ActionLink( 
+    "Create",
+    "New",
+    "Customer",
+    new {},
+    new{ @class = "btn btn-primary p-2 m-2" } 
+    )
+
+<table id="customers" class="table table-bordered table-hover">
+
+    <thead>
+    <tr>
+        <th>Customer</th>
+        <th>Membership Type</th>
+        <th>Discount Rate</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+
+    </tbody>
+
+</table>
+
+
+@section Scripts
+{
+<script src="js/Customer.js"></script>
+    
+}

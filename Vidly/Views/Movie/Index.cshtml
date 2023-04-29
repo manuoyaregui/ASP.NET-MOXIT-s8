@@ -1,0 +1,33 @@
+﻿<h2>Catalogue of Movies</h2>
+
+@Html.ActionLink(
+    "Create", 
+    "New", 
+    "Movie",
+    new {},
+    new { @class = "btn btn-primary p-1 my-2" }
+    )
+
+<table id="movies" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Movie</th>
+        <th>Genre</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        @*Acá se inserta el ajax de Movie.js*@
+    
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script src="js/Movie.js">
+    
+
+    </script>
+    
+}
