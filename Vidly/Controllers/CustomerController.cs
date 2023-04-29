@@ -1,10 +1,12 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
+        
         public IActionResult Index()
         {
             
